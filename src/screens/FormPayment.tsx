@@ -22,7 +22,7 @@ const FormSchema = Yup.object().shape({
   account: Yup.string()
     .required('Required')
     .matches(new RegExp(/^[0-9\s]*$/), 'It should be a number'),
-  creaditCardNo: Yup.string()
+  creditCardNo: Yup.string()
     .required('Required')
     .matches(new RegExp(/^[0-9\s]*$/), 'It should be a number'),
   creditCardExp: Yup.string()
@@ -48,7 +48,7 @@ const FormPayment = ({goBack, service}: Props) => {
   const formik = useFormik({
     initialValues: {
       account: current.context.userData?.account ?? '',
-      creaditCardNo: current.context.userData?.creaditCardNo ?? '',
+      creditCardNo: current.context.userData?.creditCardNo ?? '',
       creditCardExp: current.context.userData?.creditCardExp ?? '',
       creditCardCvv: current.context.userData?.creditCardCvv ?? '',
     },
@@ -102,11 +102,11 @@ const FormPayment = ({goBack, service}: Props) => {
         <Input
           style={styles.input}
           label="Credit card number"
-          caption={formik.errors['creaditCardNo']}
+          caption={formik.errors['creditCardNo']}
           placeholder="Your credit card number"
-          status={formik.errors['creaditCardNo'] && 'danger'}
-          value={formik.values.creaditCardNo}
-          onChangeText={text => formik.setFieldValue('creaditCardNo', text)}
+          status={formik.errors['creditCardNo'] && 'danger'}
+          value={formik.values.creditCardNo}
+          onChangeText={text => formik.setFieldValue('creditCardNo', text)}
           disabled={isLoading}
         />
         <Input

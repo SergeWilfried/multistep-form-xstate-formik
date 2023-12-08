@@ -1,5 +1,6 @@
 export interface UserData {
-  name: string | null;
+  first_name: string | null;
+  last_name: string | null;
   surname: string | null;
   // contact
   email: string | null;
@@ -11,7 +12,9 @@ export interface UserData {
   country: string | null;
   // billing
   account: string | null;
-  creaditCardNo: string | null;
+  creditCardNo: string | null;
   creditCardExp: string | null;
   creditCardCvv: string | null;
+  documents: string[] | null;
+  liveness: string[] | null;
 }

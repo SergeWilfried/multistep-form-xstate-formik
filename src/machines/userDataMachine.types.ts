@@ -12,6 +12,8 @@ export enum UserDataStates {
   basic = 'basic',
   address = 'address',
   payment = 'payment',
+  documents = 'documents',
+  liveness = 'liveness',
   complete = 'complete',
 }
 
@@ -21,6 +23,8 @@ export interface UserDataMachineStates {
     [UserDataStates.basic]: {};
     [UserDataStates.address]: {};
     [UserDataStates.payment]: {};
+    [UserDataStates.documents]: {};
+    [UserDataStates.liveness]: {};
     [UserDataStates.complete]: {};
   };
 }
@@ -29,6 +33,8 @@ export enum UserDataEvents {
   BASIC = 'BASIC',
   ADDRESS = 'ADDRESS',
   PAYMENT = 'PAYMENT',
+  DOCUMENTS = 'DOCUMENTS',
+  LIVENESS = 'LIVENESS',
   NEXT = 'NEXT',
   BACK = 'BACK',
 }
@@ -37,6 +43,8 @@ type EventTypesSchema =
   | UserDataEvents.BASIC
   | UserDataEvents.ADDRESS
   | UserDataEvents.PAYMENT
+  | UserDataEvents.DOCUMENTS
+  | UserDataEvents.LIVENESS
   | UserDataEvents.NEXT
   | UserDataEvents.BACK;
 

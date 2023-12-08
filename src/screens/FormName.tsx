@@ -19,7 +19,8 @@ import {
 } from '../machines/updateMachine.types';
 
 const FormSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
+  first_name: Yup.string().required('Required'),
+  last_name: Yup.string().required('Required'),
   surname: Yup.string().required('Required'),
   email: Yup.string()
     .required('Required')
@@ -42,7 +43,8 @@ const FormName = ({goBack, service}: Props) => {
 
   const formik = useFormik({
     initialValues: {
-      name: current.context.userData?.name ?? '',
+      first_name: current.context.userData?.first_name ?? '',
+      last_name: current.context.userData?.last_name ?? '',
       surname: current.context.userData?.surname ?? '',
       email: current.context.userData?.email ?? '',
       phone: current.context.userData?.phone ?? '',
@@ -50,7 +52,7 @@ const FormName = ({goBack, service}: Props) => {
     validationSchema: FormSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit: values => {
+    onSubmit: (values: any) => {
       send(UpdateEvents.NEXT, values);
     },
   });
@@ -86,22 +88,32 @@ const FormName = ({goBack, service}: Props) => {
       <>
         <Input
           style={styles.input}
-          caption={formik.errors['name'] || 'Your first name'}
+          caption={formik.errors['first_name'] || 'Your first name'}
           label="First name"
           placeholder="Name"
           status={formik.errors['name'] && 'danger'}
           value={formik.values.name}
-          onChangeText={text => formik.setFieldValue('name', text)}
+          onChangeText={(text: string) => formik.setFieldValue('first_name', text)}
+          disabled={isLoading}
+        />
+          <Input
+          style={styles.input}
+          caption={formik.errors['surname'] || 'Your Middle Name'}
+          label="Middle Name"
+          placeholder="Middle Name"
+          status={formik.errors['surname'] && 'danger'}
+          value={formik.values.surname}
+          onChangeText={(text: string) => formik.setFieldValue('surname', text)}
           disabled={isLoading}
         />
         <Input
           style={styles.input}
-          caption={formik.errors['surname'] || 'Your last name'}
+          caption={formik.errors['last_name'] || 'Your last name'}
           label="Last name"
-          placeholder="Surname"
-          status={formik.errors['surname'] && 'danger'}
-          value={formik.values.surname}
-          onChangeText={text => formik.setFieldValue('surname', text)}
+          placeholder="Last Name"
+          status={formik.errors['last_name'] && 'danger'}
+          value={formik.values.last_name}
+          onChangeText={(text: any) => formik.setFieldValue('last_name', text)}
           disabled={isLoading}
         />
         <Input
@@ -111,7 +123,7 @@ const FormName = ({goBack, service}: Props) => {
           placeholder="E-mail address"
           status={formik.errors['email'] && 'danger'}
           value={formik.values.email}
-          onChangeText={text => formik.setFieldValue('email', text)}
+          onChangeText={(text: any) => formik.setFieldValue('email', text)}
           disabled={isLoading}
           autoCapitalize="none"
         />
@@ -123,7 +135,7 @@ const FormName = ({goBack, service}: Props) => {
           placeholder="Phone"
           status={formik.errors['phone'] && 'danger'}
           value={formik.values.phone}
-          onChangeText={text => formik.setFieldValue('phone', text)}
+          onChangeText={(text: any) => formik.setFieldValue('phone', text)}
           disabled={isLoading}
         />
         {isLoading && (
