@@ -2,8 +2,9 @@ import {UserData} from 'src/types/UserData.types';
 import {getRandomNumber} from '../utils/getRandomNumber';
 
 const userEmpty: UserData = {
-  name: 'John',
-  surname: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: null,
   email: null,
   phone: null,
   street: null,
@@ -11,14 +12,15 @@ const userEmpty: UserData = {
   code: null,
   country: null,
   account: null,
-  creaditCardNo: null,
+  creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
 };
 
 const userWithContact: UserData = {
-  name: 'John',
-  surname: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: null,
   email: 'john.doe@mail.com',
   phone: '857 254 712',
   street: null,
@@ -26,14 +28,15 @@ const userWithContact: UserData = {
   code: null,
   country: null,
   account: null,
-  creaditCardNo: null,
+  creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
 };
 
 const userWithAddress: UserData = {
-  name: 'John',
-  surname: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: null,
   email: 'john.doe@mail.com',
   phone: '857 254 712',
   street: '18th Dev Street',
@@ -41,14 +44,15 @@ const userWithAddress: UserData = {
   code: '99-888',
   country: 'Devburg',
   account: null,
-  creaditCardNo: null,
+  creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
 };
 
 const userComplete: UserData = {
-  name: 'John',
-  surname: 'Doe',
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: 'Pierre',
   email: 'john.doe@mail.com',
   phone: '857 254 712',
   street: '18th Dev Street',
@@ -56,7 +60,7 @@ const userComplete: UserData = {
   code: '99-888',
   country: 'Devburg',
   account: '23 4444 2222 3333 1112 2342',
-  creaditCardNo: '1231 2312 3123 1231',
+  creditCardNo: '1231 2312 3123 1231',
   creditCardExp: '01/23',
   creditCardCvv: '123',
 };

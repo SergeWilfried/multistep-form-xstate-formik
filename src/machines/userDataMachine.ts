@@ -49,7 +49,8 @@ export const userDataMachine = Machine<
             const userData = await getUser();
 
             const {
-              name,
+              first_name,
+              last_name,
               surname,
               email,
               phone,
@@ -58,19 +59,19 @@ export const userDataMachine = Machine<
               code,
               country,
               account,
-              creaditCardNo,
+              creditCardNo,
               creditCardExp,
               creditCardCvv,
             } = userData;
 
             switch (null) {
-              case name && surname && email && phone:
+              case first_name && last_name && surname && email && phone:
                 cb({type: UserDataEvents.BASIC, userData});
                 break;
               case street && city && code && country:
                 cb({type: UserDataEvents.ADDRESS, userData});
                 break;
-              case account && creaditCardNo && creditCardExp && creditCardCvv:
+              case account && creditCardNo && creditCardExp && creditCardCvv:
                 cb({type: UserDataEvents.PAYMENT, userData});
                 break;
               default:
