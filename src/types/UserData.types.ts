@@ -15,6 +15,6 @@ export interface UserData {
   creditCardNo: string | null;
   creditCardExp: string | null;
   creditCardCvv: string | null;
-  documents: [] | null,
-  liveness: [] | null
+  documents: string[] | null;
+  liveness: string[] | null;
 }

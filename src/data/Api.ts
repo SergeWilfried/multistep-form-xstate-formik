@@ -15,6 +15,8 @@ const userEmpty: UserData = {
   creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
+  documents: null,
+  liveness: null
 };
 
 const userWithContact: UserData = {
@@ -31,6 +33,8 @@ const userWithContact: UserData = {
   creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
+  documents: null,
+  liveness: null,
 };
 
 const userWithAddress: UserData = {
@@ -47,6 +51,44 @@ const userWithAddress: UserData = {
   creditCardNo: null,
   creditCardExp: null,
   creditCardCvv: null,
+  documents: null,
+  liveness: null
+};
+
+const userWithDocument: UserData = {
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: null,
+  email: 'john.doe@mail.com',
+  phone: '857 254 712',
+  street: '18th Dev Street',
+  city: 'South Dev City',
+  code: '99-888',
+  country: 'Devburg',
+  account: null,
+  creditCardNo: null,
+  creditCardExp: null,
+  creditCardCvv: null,
+  documents: ['1'],
+  liveness: null
+};
+
+const userWithLiveness: UserData = {
+  first_name: 'John',
+  last_name: 'Doe',
+  surname: null,
+  email: 'john.doe@mail.com',
+  phone: '857 254 712',
+  street: '18th Dev Street',
+  city: 'South Dev City',
+  code: '99-888',
+  country: 'Devburg',
+  account: null,
+  creditCardNo: null,
+  creditCardExp: null,
+  creditCardCvv: null,
+  documents: ['1'],
+  liveness: null
 };
 
 const userComplete: UserData = {
@@ -63,6 +105,8 @@ const userComplete: UserData = {
   creditCardNo: '1231 2312 3123 1231',
   creditCardExp: '01/23',
   creditCardCvv: '123',
+  documents: ['1'],
+  liveness: ['1']
 };
 
 export const getUser = async (prevUser?: UserData) => {
@@ -84,6 +128,10 @@ export const getUser = async (prevUser?: UserData) => {
         return userWithAddress;
       case 4:
         return userComplete;
+      case 5:
+        return userWithDocument;
+      case 6:
+        return userWithLiveness;
       default:
         return userEmpty;
     }
