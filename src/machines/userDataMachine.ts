@@ -144,6 +144,48 @@ export const userDataMachine = Machine<
         },
       },
     },
+    [UserDataStates.documents]: {
+      on: {
+        [UserDataEvents.NEXT]: {
+          target: UserDataStates.complete,
+        },
+        [UserDataEvents.BACK]: {
+          target: UserDataStates.payment,
+        },
+      },
+      invoke: {
+        id: 'FormDocumentsUpload',
+        src: updateMachine,
+        data: (ctx: UserDataMachineContext) => ctx,
+        onDone: {
+          target: UserDataStates.complete,
+          actions: assign({
+            userData: (_, {data}) => data?.userData ?? null,
+          }),
+        },
+      },
+    },
+    [UserDataStates.liveness]: {
+      on: {
+        [UserDataEvents.NEXT]: {
+          target: UserDataStates.complete,
+        },
+        [UserDataEvents.BACK]: {
+          target: UserDataStates.documents,
+        },
+      },
+      invoke: {
+        id: 'FormFaceDetection',
+        src: updateMachine,
+        data: (ctx: UserDataMachineContext) => ctx,
+        onDone: {
+          target: UserDataStates.complete,
+          actions: assign({
+            userData: (_, {data}) => data?.userData ?? null,
+          }),
+        },
+      },
+    },
     [UserDataStates.complete]: {
       on: {
         [UserDataEvents.BACK]: {
